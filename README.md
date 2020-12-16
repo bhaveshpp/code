@@ -7,7 +7,32 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 ### Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+```
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+ini_set('memory_limit', -1);
+error_reporting(E_ALL);
 
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$carrierHelper = $objectManager->get(\Magento\Shipping\Helper\Carrier::class);
+
+/* Get frontend attribute value */
+$etat = $_product->getResource()->getAttribute('etat')->getFrontend()->getValue($_product);
+
+<referenceBlock name="copyright">
+    <action method="setTemplate">
+        <argument name="template" xsi:type="string">Dfr_Backend::page/copyright.phtml</argument>
+    </action>
+</referenceBlock>
+
+
+$writer = new \Zend\Log\Writer\Stream(BP . '/var/log/test.log');
+$logger = new \Zend\Log\Logger();
+$logger->addWriter($writer);
+$logger->info('Simple Text Log'); // Simple Text Log
+$logger->info('Array Log'.print_r($option, true)); // Array Log
+
+```
 ```markdown
 Syntax highlighted code block
 
