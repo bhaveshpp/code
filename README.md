@@ -1,12 +1,5 @@
-## Welcome to GitHub Pages
+### Code
 
-You can use the [editor on GitHub](https://github.com/bhaveshpp/code/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 ```
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -33,6 +26,87 @@ $logger->info('Simple Text Log'); // Simple Text Log
 $logger->info('Array Log'.print_r($option, true)); // Array Log
 
 ```
+
+## Magento 2 Create product custom option programetically
+
+```
+public function getOptions($product)
+    {$values = [
+            [
+                'record_id'=>0,
+                'title'=>'Option 1',
+                'price'=>0,
+                'price_type'=>"fixed",
+                'sort_order'=>1,
+                'sku' => "option_one", //code
+                'is_delete'=>0
+            ],
+            [
+                'record_id'=>1,
+                'title'=>'Option 2',
+                'price'=>$product->getCustomAttributeVal(),
+                'price_type'=>"fixed",
+                'sort_order'=>1,
+                'sku' => "option_two", //code
+                'is_delete'=>0
+            ]
+        ];
+        ];
+
+        $options = [
+            [
+                "sort_order"    => 1,
+                "title"         => "Title", // Title of select box
+                "price_type"    => "fixed", //type of price fixed / percent
+                "price"         => "", // price
+                "sku"           => "code", // code
+                "type"          => "drop_down",
+                "is_require"    => 1,
+                "values"        => $values
+            ]
+        ];
+
+        return $options;
+    }
+    
+    protected function generateOptions($productId)
+    {
+        $product = $this->product->load($productId);
+        $product->setHasOptions(1);
+        $product->setCanSaveCustomOptions(true);
+        foreach ($this->getOptions($product) as $arrayOption) {
+            $option = $this->option
+                ->setProductId($productId)
+                ->setStoreId($product->getStoreId())
+                ->addData($arrayOption);
+            $option->save();
+            $product->addOption($option);
+        }
+        $this->logger->log('info', 'Create Custom Options successfully');
+    }
+```
+
+## Magento 1 create user using SQL
+
+```
+LOCK TABLES `admin_role` WRITE , `admin_user` WRITE;
+ 
+SET @SALT = "rp";
+SET @PASS = CONCAT(MD5( CONCAT(@SALT, "Developer@test") ), CONCAT(":", @SALT));
+SELECT @EXTRA := MAX(extra) FROM admin_user WHERE extra IS NOT NULL;
+ 
+INSERT INTO `admin_user` (firstname, lastname, email, username, password, created, lognum, reload_acl_flag, is_active, extra, rp_token_created_at) 
+VALUES ('Developer', 'Iturbo', 'developer@test.com', 'developer_', @PASS,NOW(), 0, 0, 1, @EXTRA,NOW());
+ 
+INSERT INTO `admin_role` (parent_id, tree_level, sort_order, role_type, user_id, role_name) 
+VALUES (1, 2, 0, 'U', (SELECT user_id FROM admin_user WHERE username = 'developer_'), 'Developer');
+ 
+UNLOCK TABLES;
+
+```
+
+
+
 ```markdown
 Syntax highlighted code block
 
@@ -51,12 +125,3 @@ Syntax highlighted code block
 [Link](url) and ![Image](src)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/bhaveshpp/code/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
