@@ -27,6 +27,35 @@ $logger->info('Array Log'.print_r($option, true)); // Array Log
 
 ```
 
+## Magento 2 Root Script
+
+```
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+ini_set('memory_limit', -1);
+error_reporting(E_ALL);
+
+use Magento\Framework\App\Bootstrap;
+
+require 'app/bootstrap.php';
+
+$bootstrap = Bootstrap::create(BP, $_SERVER);
+
+$objectManager = $bootstrap->getObjectManager();
+
+$state = $objectManager->get('Magento\Framework\App\State');
+$state->setAreaCode('frontend');
+//$state->setAreaCode('adminhtml');
+
+/** @var \Magento\Catalog\Model\ResourceModel\Product\Collection $products */
+$products = $objectManager->create('\Magento\Catalog\Model\ResourceModel\Product\Collection')
+    ->addAttributeToSelect(['entity_id','sku'])
+    ->addFieldToFilter('description', ['like' => '%{{skin url="images/seringue.gif"}}%']);
+echo $products->getSelectSql(true);
+
+```
+
 ## Magento 2 Create product custom option programetically
 
 ### Using event observer `catalog_product_save_after`
@@ -163,42 +192,42 @@ class Save
 
 ```
 
-## Magento 1 create user using SQL
-
-```
-LOCK TABLES `admin_role` WRITE , `admin_user` WRITE;
- 
-SET @SALT = "rp";
-SET @PASS = CONCAT(MD5( CONCAT(@SALT, "Developer@test") ), CONCAT(":", @SALT));
-SELECT @EXTRA := MAX(extra) FROM admin_user WHERE extra IS NOT NULL;
- 
-INSERT INTO `admin_user` (firstname, lastname, email, username, password, created, lognum, reload_acl_flag, is_active, extra, rp_token_created_at) 
-VALUES ('Developer', 'Iturbo', 'developer@test.com', 'developer_', @PASS,NOW(), 0, 0, 1, @EXTRA,NOW());
- 
-INSERT INTO `admin_role` (parent_id, tree_level, sort_order, role_type, user_id, role_name) 
-VALUES (1, 2, 0, 'U', (SELECT user_id FROM admin_user WHERE username = 'developer_'), 'Developer');
- 
-UNLOCK TABLES;
+## Magento 2 Update mass Product description
 
 ```
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+ini_set('memory_limit', '5G');
+error_reporting(E_ALL);
 
+$url='localhost:3306';
+$username='magento2_db';
+$password='pass';
+$db = "mage_v241";
 
-```markdown
-Syntax highlighted code block
+$conn=mysqli_connect($url,$username,$password,$db);
 
-# Header 1
-## Header 2
-### Header 3
+if(!$conn){
+    die('Could not Connect My Sql:' .mysql_error());
+}
 
-- Bulleted
-- List
+$mysqli = new mysqli($url,$username,$password,$db);
 
-1. Numbered
-2. List
+if ($mysqli -> connect_errno) {
+    echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+    exit();
+}
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+$result = mysqli_query($conn,"SELECT * FROM `catalog_product_entity_text` WHERE `value` LIKE '%{{skin url=\"images/seringue.gif\"}}%'");
+echo "entity id";
+while($row = mysqli_fetch_array($result)) {
+    echo "<br>";
+    echo $row['entity_id'];
+    $description = str_replace('{{skin url="images/seringue.gif"}}','{{media url=&quot;wysiwyg/seringue.gif&quot;}}',$row['value']);
+    $description = $mysqli -> real_escape_string($description);
+    $sql = "UPDATE `catalog_product_entity_text` SET `value` = '".$description."' WHERE `value_id` = '".$row['value_id']."';";
+    mysqli_query($conn,$sql);
+}
+?>
 ```
-
