@@ -63,7 +63,8 @@ echo $products->getSelectSql(true);
 ### Using event observer `catalog_product_save_after`
 ```
 public function getOptions($product)
-    {$values = [
+    {
+        $values = [
             [
                 'record_id'=>0,
                 'title'=>'Option 1',
@@ -82,7 +83,6 @@ public function getOptions($product)
                 'sku' => "option_two", //code
                 'is_delete'=>0
             ]
-        ];
         ];
 
         $options = [
