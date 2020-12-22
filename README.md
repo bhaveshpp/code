@@ -1,4 +1,4 @@
-### Code
+### Recently used
 
 ```
 ini_set('display_errors', 1);
