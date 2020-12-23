@@ -114,3 +114,4 @@ Import frome other directory
 
 ` # php importUrl ../public_html/var/tmp/testUrls.csv`
 
+![alt url-rewrite import in magento using php script in command line](rewrite-import.png "Import Successfully")
