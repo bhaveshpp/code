@@ -1,25 +1,11 @@
 # CODE
 
-### Recently used
+### Most Recently used
+
+
+log
 
 ```
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-ini_set('memory_limit', -1);
-error_reporting(E_ALL);
-
-$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-$carrierHelper = $objectManager->get(\Magento\Shipping\Helper\Carrier::class);
-
-/* Get frontend attribute value */
-$etat = $_product->getResource()->getAttribute('etat')->getFrontend()->getValue($_product);
-
-<referenceBlock name="copyright">
-    <action method="setTemplate">
-        <argument name="template" xsi:type="string">Dfr_Backend::page/copyright.phtml</argument>
-    </action>
-</referenceBlock>
-
 
 $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/test.log');
 $logger = new \Zend\Log\Logger();
@@ -28,6 +14,44 @@ $logger->info('Simple Text Log'); // Simple Text Log
 $logger->info('Array Log'.print_r($option, true)); // Array Log
 
 ```
+
+Use Objectmanager
+
+```
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$carrierHelper = $objectManager->get(\Magento\Shipping\Helper\Carrier::class);
+
+```
+
+php setting
+
+```
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+ini_set('memory_limit', -1);
+error_reporting(E_ALL);
+
+```
+
+Change template of block xml
+
+```
+
+<referenceBlock name="copyright">
+    <action method="setTemplate">
+        <argument name="template" xsi:type="string">Dfr_Backend::page/copyright.phtml</argument>
+    </action>
+</referenceBlock>
+
+```
+
+Get frontend attribute value
+
+ ` $etat = $_product->getResource()->getAttribute('etat')->getFrontend()->getValue($_product); `
+
+
 
 ## Magento 2 Root Script
 
