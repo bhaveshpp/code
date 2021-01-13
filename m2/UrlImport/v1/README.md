@@ -19,39 +19,17 @@ require __DIR__ . '/../app/bootstrap.php';
 $bootstrap = Bootstrap::create(BP, $_SERVER);
 
 $objectManager = $bootstrap->getObjectManager();
-?>
-<?PHP
+
 define("PATH", "uploads/");
   if(!empty($_FILES['csv']))
   {
-	
-	$uploaderFactory = $objectManager->create(\Magento\MediaStorage\Model\File\UploaderFactory::class);
-	$fileSystem = $objectManager->create(\Magento\Framework\Filesystem::class);
-	$uploader = $uploaderFactory->create(['fileId' => 'csv']);
-	$mediaDirectory = $fileSystem->getDirectoryWrite(\Magento\Framework\App\Filesystem\DirectoryList::ROOT);
-	$uploader->setAllowRenameFiles(true);
-	$result = $uploader->save($mediaDirectory->getAbsolutePath('script/uploads'));
-	
-    //$filepath = PATH . basename( $_FILES['csv']['name']);
-
-    //if(file_exists($filepath)){
-      //$newPath = PATH . time() . basename( $_FILES['csv']['name']);
-      //if(move_uploaded_file($_FILES['csv']['tmp_name'], $newPath)) {
-        //echo "The file ".  basename( $_FILES['csv']['name']). " has been uploaded";
-     // } else{
-         // echo "There was an error uploading the file, please try again!1";
-     // }
-    //}else{
-		//var_dump(move_uploaded_file($_FILES['csv']['tmp_name'], "uploads/".$_FILE['csv']['name']));
-      //if(move_uploaded_file($_FILES['csv']['tmp_name'], $filepath)) {
-        //echo "The file ".  basename( $_FILES['csv']['name']). " has been uploaded";
-      //} else{
-        //  echo "There was an error uploading the file, please try again!2";
-      //}
-    //}
-    //header("Refresh:0; url=import.php");
-    //exit;
-  }
+    $uploaderFactory = $objectManager->create(\Magento\MediaStorage\Model\File\UploaderFactory::class);
+    $fileSystem = $objectManager->create(\Magento\Framework\Filesystem::class);
+    $uploader = $uploaderFactory->create(['fileId' => 'csv']);
+    $mediaDirectory = $fileSystem->getDirectoryWrite(\Magento\Framework\App\Filesystem\DirectoryList::ROOT);
+    $uploader->setAllowRenameFiles(true);
+    $result = $uploader->save($mediaDirectory->getAbsolutePath('script/uploads'));
+	}
   if ($_POST) {
     if (!empty($_POST['delete'])) {
       $csv = PATH.$_POST['csv'];
@@ -151,8 +129,6 @@ if (isset($csv)){
         echo "<br/> Total Rows: ".$row;
         echo("<br/>");
     }
-
-
 }
 
 /**
