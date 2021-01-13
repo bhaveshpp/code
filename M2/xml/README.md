@@ -43,3 +43,29 @@ Define Event Observer in `events.xml`
 	</event> 
 </config>
 ```
+
+### layout xml
+
+Change template of block xml move or remove or add block
+
+```
+<?xml version="1.0"?>
+<page layout="2columns-right" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceBlock name="product.attributes" remove="true" />
+    <referenceBlock name="product.info.sku">
+        <action method="setTemplate">
+            <argument name="template" xsi:type="string">Magento_Catalog::product/view/attributeSku.phtml</argument>
+        </action>
+    </referenceBlock>
+    <block class="Tecksky\Custom\Block\Catalog\Product\RefurbishBlock" name="refurbished.block"
+           template="Magento_Catalog::product/view/refurbishedBlock.phtml" >
+    </block>
+    <block class="Magento\Catalog\Block\Product\View" name="outstock.block"
+           template="Magento_Catalog::product/view/outstockBlock.phtml" >
+    </block>
+    <move element="product.info" destination="product.info.main" after="alert.urls"/>
+    <move element="refurbished.block" destination="product.info.main" after="alert.urls"/>
+    <move element="outstock.block" destination="product.info.main" after="alert.urls"/>
+</page>
+```
