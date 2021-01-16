@@ -2,6 +2,8 @@
 
 ### Using event observer `catalog_product_save_after`
 ```
+# \Magento\Catalog\Model\Product $product,
+
 public function getOptions($product)
     {
         $values = [
