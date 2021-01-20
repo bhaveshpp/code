@@ -2,6 +2,10 @@
 
 ### Using event observer `catalog_product_save_after`
 ```
+
+# get option value from order item
+# $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
+
 # \Magento\Catalog\Model\Product $product,
 # \Magento\Catalog\Model\Product\Option $option
 
