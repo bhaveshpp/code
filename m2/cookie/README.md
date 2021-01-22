@@ -69,4 +69,6 @@ Use Object
             $this->cookie->setPublicCookie('previous_redirect_url1',$rUrl,$this->cookieMeta); 
             /* Get Cookie */
             $this->cookie->getCookie('previous_redirect_url');
+            /* Delete Cookie */
+            $this->cookie->deleteCookie('previous_redirect_url');
 ```
