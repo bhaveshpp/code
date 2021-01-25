@@ -41,6 +41,6 @@ Get frontend attribute value
 
  ` $etat = $_product->getResource()->getAttribute('etat')->getFrontend()->getValue($_product); `
 
-### [Root scripts](https://bhaveshpp.github.io/code/M2/root-scripts/)
+### [Root scripts](https://bhaveshpp.github.io/code/m2/root-scripts/)
 
 ### [Product Custom Options](https://bhaveshpp.github.io/code/m2/product-custom-option/)
