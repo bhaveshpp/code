@@ -126,7 +126,7 @@ class Unsubscribe extends \Magento\Framework\View\Element\Template
 ```
 <?php
 
-namespace Bhaveshpp\Unsubscribe\Controller\Index;
+namespace *\Unsubscribe\Controller\Index;
 
 use Magento\Framework\App\ObjectManager;
 
@@ -170,47 +170,59 @@ class Index extends \Magento\Newsletter\Controller\Subscriber
 
     public function execute()
     {
-        
-        $result = __('You unsubscribed.');
-
-        if ($this->getRequest()->isPost() && $this->getRequest()->getPost('email')) {
+        if ($this->getRequest()->isGet() && $this->getRequest()->getParam('email')) {
+            $email = $this->_request->getParam('email');
+            $this->nowFinalyUnsubscribe($email);
+        }
+        elseif($this->getRequest()->isPost() && $this->getRequest()->getPost('email')) {
             $formId = 'unsubscribe_form';
             $captcha = $this->_captchaHelper->getCaptcha($formId);
             if ($captcha->isRequired()) {
-                if (!$captcha->isCorrect($this->_captchaStringResolver->resolve($this->getRequest(), $formId))) {        
+                if (!$captcha->isCorrect($this->_captchaStringResolver->resolve($this->getRequest(), $formId))) 
+                {        
                     $this->messageManager->addError(__('Incorrect CAPTCHA.'));
                     $this->getDataPersistor()->set($formId, $this->getRequest()->getPostValue());
                     $this->_actionFlag->set('', \Magento\Framework\App\Action\Action::FLAG_NO_DISPATCH, true);
                     $this->getResponse()->setRedirect($this->_redirect->getRedirectUrl());
+                }else{
+                    $email = (string)$this->getRequest()->getPost('email');
+                    $this->nowFinalyUnsubscribe($email);
                 }
             }
-            
-            $email = (string)$this->getRequest()->getPost('email');
-
-            try {
-                
-                $this->validateEmailFormat($email);
-                $this->validateEmailAvailable($email);
-
-                $subcriber = $this->_subscriberFactory->create()->loadByEmail($email);
-                $subcriber->unsubscribe();
-                $this->messageManager->addSuccess($result);
-            } catch (\Magento\Framework\Exception\LocalizedException $e) {
-                $this->messageManager->addException($e, __('There was a problem with the unsubscription. %1',$e->getMessage()));
-            } catch (\Exception $e) {
-                $this->messageManager->addException($e, __('Something went wrong with the unsubscription. %1',$e->getMessage()));
-            }
-            $this->getResponse()->setRedirect($this->_redirect->getRedirectUrl());
 
         } else {
             return $this->_pageFactory->create();
         } 
     }
 
+    public function nowFinalyUnsubscribe($email)
+    {
+        $result = __('You have successfully unsubscribed %1 Email.', $email);
+        try {
+            $this->validateEmailFormat($email);
+            $this->validateEmailAvailable($email);
+            $subcriber = $this->_subscriberFactory->create()->loadByEmail($email);
+            $subcriber->unsubscribe();
+            $this->messageManager->addSuccess($result);
+        } catch (\Magento\Framework\Exception\LocalizedException $e) {
+            $this->messageManager->addException($e, __('There was a problem with the unsubscription. %1',$e->getMessage()));
+        } catch (\Exception $e) {
+            $this->messageManager->addException($e, __('Something went wrong with the unsubscription. %1',$e->getMessage()));
+        }
+
+        if ($this->_redirect->getRedirectUrl() === $this->_url->getBaseUrl()) {
+            $this->getResponse()->setRedirect($this->_url->getBaseUrl().$this->getRequest()->getFrontName());
+        }
+        else {
+            $this->getResponse()->setRedirect($this->_redirect->getRedirectUrl());
+        }
+
+    }
+
     public function validateEmailFormat($email)
     {
         if (!\Zend_Validate::is($email, \Magento\Framework\Validator\EmailAddress::class)) {
-            throw new \Magento\Framework\Exception\LocalizedException(__('Please enter a valid email address.'));
+            throw new \Magento\Framework\Exception\LocalizedException(__('Please enter a valid email address. %1 is not valid Email', $email));
         }
     }
 
@@ -219,10 +231,10 @@ class Index extends \Magento\Newsletter\Controller\Subscriber
         $subcriber = $this->_subscriberFactory->create()->loadByEmail($email);
         
         if ( !$subcriber->getId() ) {
-            throw new \Magento\Framework\Exception\LocalizedException( __('Subcriber not found.')
+            throw new \Magento\Framework\Exception\LocalizedException( __('Subcriber %1 not found.', $email)
             );
         } elseif (!$subcriber->isSubscribed()) {
-            throw new \Magento\Framework\Exception\LocalizedException( __('Subcriber is not active.')
+            throw new \Magento\Framework\Exception\LocalizedException( __('Subcriber %1 is not active.', $email)
             );
         }
     }
