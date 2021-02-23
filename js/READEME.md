@@ -1,0 +1,24 @@
+Qty Plus-Minus button
+
+```
+<script>
+    requirejs(['jquery'], function( $ ) {
+        $(document).ready(function() {
+            $('#cart-qty-minus').click(function () {
+                var $input = $(this).parent().find('#qty');
+                var count = parseInt($input.val()) - 1;
+                count = count < 1 ? 1 : count;
+                $input.val(count);
+                $input.change();
+                return false;
+            });
+            $('#cart-qty-plus').click(function () {
+                var $input = $(this).parent().find('#qty');
+                $input.val(parseInt($input.val()) + 1);
+                $input.change();
+                return false;
+            });
+        });
+    });
+</script>
+```
