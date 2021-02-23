@@ -62,7 +62,9 @@ class AuthorizationViewModel implements ArgumentInterface
         return "customer/account";
     }
 }
+```
 
+```
 class DateViewModel implements ArgumentInterface
 {
     protected $_dateTimeFactory;
@@ -86,7 +88,9 @@ class DateViewModel implements ArgumentInterface
         return $this->getDateWithFormat("l, F j", $time);//return formated date
     }
 }
+```
 
+```
 class PriceViewModel implements ArgumentInterface
 {
     protected $_priceCurrency;
@@ -103,7 +107,9 @@ class PriceViewModel implements ArgumentInterface
         return $this->_priceCurrency->format($price,true,2);
     }
 }
+```
 
+```
 class UrlViewModel implements ArgumentInterface
 {
     protected $_storeManager;
@@ -126,4 +132,34 @@ class UrlViewModel implements ArgumentInterface
     }
 }
 
+```
+
+```
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\ScopeInterface;
+
+class ConfigViewModel implements ArgumentInterface
+{
+    /**
+     * @var ScopeInterface
+     */
+    private $scope;
+
+    public function __construct(
+        ScopeConfigInterface $scope
+    )
+    {
+        $this->scope = $scope;
+    }
+
+    public function getStoreContactNumber()
+    {
+        return $this->scope->getValue('general/store_information/phone',ScopeInterface::SCOPE_STORES);
+    }
+    
+    public function getStoreContactEmail()
+    {
+        return $this->scope->getValue('trans_email/ident_general/email');
+    }
+}
 ```
