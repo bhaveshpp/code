@@ -88,3 +88,19 @@ Change template of block xml move or remove or add block
     <move element="outstock.block" destination="product.info.main" after="alert.urls"/>
 </page>
 ```
+
+Set page title
+
+```
+<referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">Lab Grown Diamonds</argument>
+            </action>
+        </referenceBlock>
+```
+
+add class to body
+
+```
+<attribute name="class" value="page-with-filter"/>
+```
