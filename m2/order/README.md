@@ -36,3 +36,17 @@ class OrderPendingMessage implements \Magento\Framework\View\Element\Block\Argum
 }
 
 ```
+
+Update order state and status programetically
+
+```
+use Magento\Sales\Model\Order;
+
+$orderId = 1;
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$order = $objectManager->create('\Magento\Sales\Model\Order') ->load($orderId);
+$orderState = Order::STATE_PROCESSING;
+$order->setState($orderState)->setStatus(Order::STATE_PROCESSING);
+$order->save();
+
+```

@@ -25,6 +25,6 @@ Call CMS Block inside another CMS Block
 ```
 {{widget type="cms/widget_block" template="cms/widget/static_block/default.phtml" block_id="1"}}
 
-\{\{block type="cms/block" block_id="your_block_id"\}\}
+{{block type="cms/block" block_id="your_block_id"}}
 
 ```

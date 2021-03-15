@@ -104,3 +104,21 @@ add class to body
 ```
 <attribute name="class" value="page-with-filter"/>
 ```
+
+
+At start body
+
+```
+<referenceContainer name="after.body.start">
+    <block class="Magento\Framework\View\Element\Text" name="exampleScript">
+        <arguments>
+            <argument name="text" xsi:type="string">
+                <![CDATA[
+                    <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-lol" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> 
+                ]]>
+            </argument>
+        </arguments>
+    </block>
+</referenceContainer>
+
+```
