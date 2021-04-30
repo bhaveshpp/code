@@ -1,0 +1,227 @@
+/*
+ Card detail view Slider by bhavesh start here
+*/
+
+jQuery( document ).ready(function() {
+	var slider = $('.carousl-box');
+	var activeSlide = slider.find('.slide-item.active');
+	var slideWidth = activeSlide.width()+100;	
+	
+	var sliderHeight = $('.slide-item.active .tarot_o_n_presentationc').height();
+
+	activeSlide.next('.slide-item').css({"right": "-="+ (slideWidth) +"px"});
+	
+	$('.slide-item').css({"height": ""+ sliderHeight +"px"});
+	$('.tarot_o_n_cadre').css({"height": ""+ (sliderHeight+250) +"px"});
+	
+	$('.prev-btn').addClass('disabled');
+
+
+	$('.next-btn').on('click',function(){
+		if (!$(this).hasClass('disabled')) {
+			let activeSlide = slider.find('.slide-item.active');
+			let slideWidth = activeSlide.width()+100;
+			if (activeSlide.next('.slide-item').length > 0) {
+				console.log(slideWidth+25);
+				activeSlide.animate({"left": "-="+ (slideWidth) +"px"}, 200, "linear");
+				activeSlide.next('.slide-item').animate({"right": "+="+ (slideWidth) +"px"}, 200, "linear");
+				
+				activeSlide.removeClass('active');			
+				activeSlide.next('.slide-item').addClass('active');
+				
+				$('.next-btn').addClass('disabled');
+				$('.prev-btn').removeClass('disabled');
+				
+				sliderHeight = $('.slide-item.active .tarot_o_n_presentationc').height();
+				$('.slide-item').css({"height": ""+ sliderHeight +"px"});
+				$('.tarot_o_n_cadre').css({"height": ""+ (sliderHeight+350) +"px"});
+			}
+		}
+	});
+	$('.prev-btn').on('click',function(){
+		if (!$(this).hasClass('disabled')) {
+			console.log('lol');
+			let activeSlide = slider.find('.slide-item.active');
+			let slideWidth = activeSlide.width()+100;
+			if (activeSlide.prev('.slide-item').length > 0) {
+				activeSlide.animate({"right": "-="+ (slideWidth) +"px"}, 200, "linear");
+				activeSlide.prev('.slide-item').animate({"left": "+="+ (slideWidth) +"px"}, 200, "linear");
+				
+				activeSlide.removeClass('active');			
+				activeSlide.prev('.slide-item').addClass('active');
+				
+				$('.prev-btn').addClass('disabled');
+				$('.next-btn').removeClass('disabled');
+
+				sliderHeight = $('.slide-item.active .tarot_o_n_presentationc').height();
+				$('.slide-item').css({"height": ""+ sliderHeight +"px"});
+				$('.tarot_o_n_cadre').css({"height": ""+ (sliderHeight+250) +"px"});
+			}
+		}
+	});
+});
+
+/* slider End here*/
+
+<div class="tarot_o_n_margin col-xs-12 tarot_o_n_cadre">
+							<div class="carousl-box">
+								
+								<div class="slide-item active">
+									<div class="slide-content">
+										<h2 class="tarot_o_n_dashed"><?php echo $domaine_reponse; ?></h2>
+										<div class="tarot_o_n_presentationc">
+											<img src="../data/images/produit/Tarot/<?php echo $cartechoisie1; ?>.gif" class="float-left tarot_o_n_pres_image" alt="" data-toggle="modal" data-target="#Modal_Card1" title ="explication de la carte"/>			
+											<p>
+												<?php echo utf8_encode(perso($ResultTarotCard1)); ?>
+											</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="slide-item">
+									<div class="slide-content">
+										<h2 class="tarot_o_n_dashed tarot_o_n_padding20"><?php AP_affiche($AP_table,"TON_RESULTTITRECARD2");?></h2>
+										<div class="tarot_o_n_presentationc">						
+											<img src="../data/images/produit/Tarot/<?php echo $cartechoisie2; ?>.gif" class="float-left tarot_o_n_pres_image" alt="" data-toggle="modal" data-target="#Modal_Card2" title ="explication de la carte"/>
+											<p>
+												<?php echo utf8_encode(perso($ResultTarotCard2)); ?>
+											</p>
+										</div> 
+									</div> 
+								</div> 
+
+								<span class="next-btn nev-arrow"><i class="fa fa-chevron-right"></i></span>
+								<span class="prev-btn nev-arrow"><i class="fa fa-chevron-left"></i></span>
+								<button class="next-btn nev-btn">Next</button>
+								<button class="prev-btn nev-btn">Previous</button>
+							</div>
+						</div>
+
+
+                        /* Card detail view Slider by bhavesh start here */
+.tarot_o_n_cadre{
+    width: 100%;
+    height: 500px;
+    position: relative;
+    padding-bottom: 40px;
+    overflow: hidden;
+}
+
+.carousl-box {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+.carousl-box .slide-item{
+    max-width: 80%;
+    height: 440px;
+    transition: 500ms;
+    /* display: none; */
+    position: absolute;
+}
+
+.carousl-box .slide-item.active{
+    display: block;
+    transition: 500ms;
+    -webkit-animation: 0.8s;
+    -moz-animation: 0.8s;
+    animation: 0.8s;
+}
+.carousl-box .prev-btn, 
+.carousl-box .next-btn{
+  position:absolute;
+  cursor: pointer;
+}
+
+.carousl-box span.nev-arrow{
+    font-size: 20px;
+}
+
+.carousl-box span.prev-btn{
+    top: 40%;
+    left: 0;
+}
+.carousl-box span.next-btn{
+    top: 40%;
+    right: 0;
+}
+.carousl-box button.nev-btn{
+    border-radius: 100px;
+	padding: 5px 15px;
+    bottom: 10px;
+    color: #fff;
+	background-color: rgb(0, 0, 0, 0.7);
+    border: 2px solid #FFFFFF;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 8px;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.carousl-box .prev-btn.disabled, 
+.carousl-box .next-btn.disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.carousl-box button.prev-btn{
+    left: 30px;
+}
+.carousl-box button.next-btn{
+    right: 30px;
+}
+.carousl-box .nev-arrow i {
+	font-size: 0;
+	width: 20px;
+	height: 180px;
+	display: block;
+	position: relative;
+}
+
+.carousl-box .nev-arrow i:before, .carousl-box .nev-arrow i:after {
+    content: "";
+    width: 2px;
+    height: 90px;
+    background: #000;
+    position: absolute;
+    left: -10%;
+}
+body .carousl-box .nev-arrow {
+    top: 40%;
+    transform: translateY(-50%);
+}
+.carousl-box .nev-arrow i.fa-chevron-left:before {
+    transform: translate(-50%, -50%) rotate(10deg);
+    left: 11px;
+    top: 45px;
+}
+.carousl-box .nev-arrow i:after {
+    transform: rotate(170deg);
+    top: 88px;
+    left: 10px;
+}
+
+body .carousl-box .nev-arrow.next-btn {
+    left: inherit;
+    right: 0;
+}
+
+body .carousl-box .nev-arrow.next-btn:before {
+    transform: rotate(45deg);
+}
+
+body .carousl-box .nev-arrow.next-btn i:before {
+    transform: rotate(169deg);
+    right: 9px;
+    left: inherit;
+}
+
+body .carousl-box .nev-arrow.next-btn i:after {
+	transform: rotate(11deg);
+	left: inherit;
+	right: 9px;
+}
+
+
+/* slider End here*/
