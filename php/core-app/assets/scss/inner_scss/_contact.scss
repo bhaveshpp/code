@@ -1,0 +1,321 @@
+/**********************************************************
+//////////////////    Contact page    ////////////////////////
+**********************************************************/
+
+.getintouch {
+    position: relative;
+    @include respond-to($screen1325) {
+        padding-top: 160px;
+    }
+    @include respond-to($screen1024) {
+        padding-top: 130px;
+    }
+    @include respond-to($screen991) {
+        padding-top: 100px;
+       }
+    .container {
+        padding-left: 250px;
+        position: relative;
+        @include respond-to($screen1600) {
+            padding-left: 110px;
+        }
+        @include respond-to($screen1440) {
+            padding-left: 110px;
+        }
+        @include respond-to($screen767) {
+            padding-left: 15px;
+           }
+        .secleft-line {
+            left: 170px;
+            top: 80px;
+            @include respond-to($screen1600) {
+                left: 30px;
+            }
+            @include respond-to($screen1199) {
+                left: 50px;
+                top: 70px;
+            }
+            @include respond-to($screen1024) {
+                top: 60px;
+                font-size: 16px;
+            }
+        }
+        .sec-title {
+            margin-bottom: 50px;
+            @include respond-to($screen1199) {
+                line-height: 1;
+                margin-bottom: 30px;
+                margin-top: 20px;
+            }
+        }
+        .git-inner {
+            display: flex;
+            flex-wrap: wrap;
+            .git-top {
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin-bottom: 50px;
+                .gittop-strtext {
+
+                    width: 100%;
+                    display: block;
+                    max-width: 1300px;
+                    font-size: 40px;
+                    font-weight: 200;
+
+                    @include respond-to($screen1199){
+                        font-size: 30px;
+                    }
+                    @include respond-to($screen991) {
+                        font-size: 24px;
+                    }
+                    @include respond-to($screen767) {
+                        font-size: 20px;
+                    }
+                }
+
+                .gittop-text {
+                    color: $color6;
+                    font-size: 20px;
+                    max-width: 1300px;
+                    margin: 15px 0;
+                    @include respond-to($screen1199) {
+                        font-size: 17px;
+                    }
+                    @include respond-to($screen991) {
+                        font-size: 15px;
+                        line-height: 1.5;
+                    }
+                }
+            }
+            .git-left {
+                flex: 0 0 40%;
+                max-width: 40%;
+                @include respond-to($screen991) {
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                   }
+                .email-box {
+                    margin-bottom: 30px;
+                    @include respond-to($screen1199) {
+                        margin-bottom: 20px;
+                    }
+                }
+                .contact-box {
+                    @extend .email-box;
+                }
+                .address-box {
+                    @extend .email-box;
+                }
+                a {
+                    color: $color3;
+                    font-size: 20px;
+                    @include respond-to($screen1199) {
+                        font-size: 17px;
+                    }
+                    @include respond-to($screen991) {
+                        font-size: 15px;
+                       }
+                    &:hover {
+                        filter: drop-shadow(0 0 3px rgba($color3, 1));
+                    }
+                }
+                p {
+                    font-size: 20px;
+                    @include respond-to($screen1199) {
+                        font-size: 17px;
+                    }
+                    @include respond-to($screen991) {
+                        font-size: 15px;
+                       }
+                }
+                span {
+                    font-size: 18px;
+                    @include respond-to($screen1199) {
+                        font-size: 15px;
+                    }
+                    color: $color6;
+                    display: block;
+                }
+            }
+            .git-right {
+                flex: 0 0 60%;
+                max-width: 60%;
+                padding: 0 30px;
+                @include respond-to($screen1440) {
+                    padding: 0;
+                }
+                @include respond-to($screen991) {
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                   }
+
+                .git-form {
+                    margin-bottom: -245px;
+                    z-index: 1;
+                    position: relative;
+                    background-color: #323232;
+                    padding: 30px 50px;
+                    max-width: 80%;
+                    @include respond-to($screen1600) {
+                        max-width: 100%;
+                    }
+                    @include respond-to($screen1280) {
+                        margin-bottom: -160px;
+                    }
+                    @include respond-to($screen1024) {
+                        padding: 30px;
+                    }
+                   
+                    .gitform-title {
+                        font-size: 54px;
+                        margin-top: 0;
+                        font-weight: $font-semiregular;
+                        @include respond-to($screen1325) {
+                            font-size: 42px;
+                        }
+                        @include respond-to($screen1024) {
+                            font-size: 34px;
+                        }
+                        @include respond-to($screen991) {
+                            line-height: 1;
+                            font-size: 28px;
+                           }
+                           @include respond-to($screen600){
+                            font-size: 20px;
+                           }
+                    }
+                    .gitform-subtitle {
+                        font-size: 20px;
+                        @include respond-to($screen991) {
+                            font-size: 17px;
+                           }
+                           @include respond-to($screen600){
+                               font-size: 14px;
+                           }
+                    }
+                    .gitform-alert {
+                        color: $color6;
+                        margin-left: auto;
+                        display: block;
+                        width: max-content;
+                        @include respond-to($screen1024) {
+                            font-size: 14px;
+                        }
+                    }
+                    ::placeholder {
+                        color: $color6;
+                    }
+                    .select-cover {
+                        position: relative;
+                        &:before {
+                            content: "";
+                            height: 12px;
+                            width: 12px;
+                            border: 1px solid $color3;
+                            display: block;
+                            position: absolute;
+                            right: 8px;
+                            bottom: 35px;
+                            border-width: 0 0 2px 2px;
+                            transform: rotate(-45deg);
+                            @include respond-to($screen991) {
+                                bottom: 22px;
+                               }
+                        }
+                    }
+                    input,
+                    select,
+                    textarea {
+                        background-color: transparent;
+                        border: none;
+                        padding-left: 0;
+                        border-bottom: 1px solid $bordercolor6;
+                        resize: none;
+                        @include respond-to($screen991) {
+                            padding: 6px 0;
+                            margin-bottom: 13px;
+                           }
+                           option{
+                               color: $color2;
+                        }
+                    }
+                    select, option {
+                            cursor: pointer !important;
+                        }
+                    button {
+                        font-size: 18px;
+                        border: 1px solid $bordercolor3;
+                        text-transform: uppercase;
+                        color: $color3;
+                        padding: 8px 25px;
+                        position: relative;
+                        &:before {
+                            content: "";
+                            position: absolute;
+                            height: 100%;
+                            transition: 0.5s;
+                            width: 0;
+                            background-color: $bgcolor3;
+                            top: 0;
+                            left: 0;
+                            z-index: -1;
+                        }
+                        &:hover {
+                            color: $color2;
+                            &:before {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.map {
+    position: relative;
+    background-color: $bgcolor3;
+    color: $color2;
+    @include respond-to($screen1024) {
+        padding-top: 150px;
+       }
+    .container {
+        padding-left: 250px;
+        position: relative;
+        @include respond-to($screen1600) {
+            padding-left: 110px;
+        }
+        @include respond-to($screen1440) {
+            padding-left: 110px;
+        }
+        @include respond-to($screen767) {
+            padding-left: 15px;
+           }
+        .secleft-line {
+            left: 170px;
+            top: 80px;
+            @include respond-to($screen1600) {
+                left: 30px;
+            }
+            @include respond-to($screen1199) {
+                left: 50px;
+                top: 70px;
+            }
+            @include respond-to($screen1024) {
+                top: 60px;
+                font-size: 16px;
+            }
+        }
+
+        .sec-title {
+            margin-bottom: 50px;
+            @include respond-to($screen1199) {
+                line-height: 1;
+                margin-bottom: 30px;
+                margin-top: 20px;
+            }
+        }
+    }
+}

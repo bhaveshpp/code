@@ -1,0 +1,1207 @@
+/**********************************************************
+//////////////////    Home page    ////////////////////////
+**********************************************************/
+
+//banner  ************************
+.main-cover{
+    &.hp{
+        .blog{
+            padding-top: 0;
+        }
+    }
+}
+.banner {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+
+    .bnr-title-cover {
+        padding: 0 15px;
+        .bnr-title {
+            font-size: $font76;
+            font-weight: $font-light;
+            max-width: 1200px;
+            letter-spacing: -2.6px;
+            text-align: center;
+            line-height: 1.2;
+            margin: 0 auto;
+            @include respond-to($screen1600) {
+                font-size: 60px;
+                max-width: 1000px;
+            }
+            @include respond-to($screen1199) {
+                font-size: 40px;
+                max-width: 640px;
+            }
+            @include respond-to($screen767) {
+                font-size: 36px;
+                max-width: 580px;
+            }
+            @include respond-to($screen600) {
+                font-size: 29px;
+                max-width: 380px;
+                margin-bottom: 15px;
+            }
+            span {
+                font-weight: $font-regular;
+            }
+        }
+        .bnr-subtitle {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 30px;
+            @include respond-to($screen1199){
+                font-size: 20px;
+            }
+            @include respond-to($screen767) {
+                margin-bottom: 15px;
+            }
+            @include respond-to($screen600) {
+                font-size: 15px;
+            }
+        }
+        .bnr-btns {
+            margin: 0 auto;
+            width: max-content;
+            .theme-btn {
+                border: 2px solid $bordercolor3;
+                padding: 10px 23px;
+                margin: 10px 5px 0;
+                @include respond-to($screen1199){
+                    font-size: 13px;
+                }
+                @include respond-to($screen991){
+                    padding: 7px 23px;
+                }
+                @include respond-to($screen767) {
+                    padding: 4px 14px;
+                }
+                @include respond-to($screen600) {
+                    font-size: 10px;
+                }
+                &:after,
+                svg {
+                    display: none;
+                }
+                &:before {
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    -webkit-transition: 0.5s;
+                    -o-transition: 0.5s;
+                    -moz-transition: 0.5s;
+                    transition: 0.5s;
+                    width: 0;
+                    background-color: $bgcolor3;
+                    top: 0;
+                    left: 0;
+                    z-index: -1;
+                }
+                &:hover {
+                    color: $color2;
+                    &:before {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .scrolldown-cover {
+        position: absolute;
+        bottom: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        .scrolldown-btn {
+            max-width: 195px;
+            display: flex;
+            align-items: center;
+            @include respond-to($screen1199){
+                max-width: 170px;
+            }
+            svg {
+                fill: $color3;
+                width: 100%;
+                max-width: 60px;
+                transform: rotate(180deg);
+                @include respond-to($screen1199){
+                    max-width: 50px;
+                }
+                @include respond-to($screen767) {
+                    max-width: 40px;
+                }
+            }
+        }
+        .scrolldown-text {
+            opacity: 0.5;
+            width: 100%;
+            margin-left: 4px;
+            letter-spacing: 0.8px;
+            font-size: $font15;
+            font-weight: $font-semibold;
+            transition: 0.5s;
+            @include respond-to($screen1199){
+                font-size: 13px;
+            }
+            @include respond-to($screen767) {
+                max-width: 100px;
+                font-size: 12px;
+            }
+        }
+        &:hover {
+            .scrolldown-text {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+//services  ************************
+
+.services {
+    .ser-cover {
+        marquee {
+            margin-bottom: 2px;
+            div {
+                display: inline-block;
+            }
+        }
+
+        .ser-inner {
+            border-bottom: 1px solid $bordercolor4;
+            display: inline-block;
+            padding-right: 40px;
+            margin: 0 -3px;
+        }
+        .ser-img-cover {
+            width: 100%;
+            max-width: 40px;
+            display: block;
+            position: relative;
+            padding: 0 0 10px 0;
+            float: left;
+            @include respond-to($screen1199){
+                max-width: 30px;
+            }
+            @include respond-to($screen991) {
+                max-width: 26px;
+            }
+            &:before {
+                content: "";
+                position: absolute;
+                bottom: -2px;
+                height: 3px;
+                width: 100%;
+                background-color: $bordercolor3;
+            }
+            &.whatschat {
+                &:before {
+                    background-color: #20a2e7;
+                }
+            }
+            &.unit-converter {
+                &:before {
+                    background-color: #464b88;
+                }
+            }
+            &.document-scanner {
+                &:before {
+                    background-color: #abb0bb;
+                }
+            }
+        }
+        .ser-text {
+            display: block;
+            font-size: 30px;
+            padding-left: 20px;
+            margin-left: 20px;
+            line-height: 1;
+            border-left: 2px solid $bordercolor3;
+            float: right;
+            @include respond-to($screen1325) {
+                font-size: 24px;
+            }
+            @include respond-to($screen1199) {
+                font-size: 16px;
+                margin-top: 10px;
+            }
+            @include respond-to($screen991) {
+                margin-top: 5px;
+            }
+            @include respond-to($screen767) {
+                margin-left: 10px;
+                padding-left: 10px;
+            }
+        }
+    }
+}
+//tech  ************************
+.tech {
+    @extend %pl375;
+    position: relative;
+
+    .techbg-cover {
+        position: absolute;
+        top: -250px;
+        left: 244px;
+        right: 150px;
+        bottom: 0;
+        z-index: -1;
+        @include respond-to($screen1780) {
+            top: -130px;
+        }
+        @include respond-to($screen1600) {
+            top: -60px;
+        }
+        @include respond-to($screen1325) {
+            top: 0;
+        }
+        @include respond-to($screen1199) {
+            left: 175px;
+            right: 90px;
+        }
+        @include respond-to($screen991) {
+            left: 50px;
+            top: -100px;
+        }
+        @include respond-to($screen767) {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+    }
+    .tech-space {
+        width: 100%;
+        padding-top: 400px;
+        @include respond-to($screen991) {
+            padding-top: 350px;
+        }
+        @include respond-to($screen767) {
+            padding-top: 150px;
+        }
+    }
+    .tech-text {
+        width: 100%;
+        margin-left: auto;
+        margin-right: 210px;
+        max-width: 380px;
+        @include respond-to($screen1325) {
+            margin-right: 175px;
+        }
+        @include respond-to($screen1280) {
+            margin-right: 90px;
+        }
+        @include respond-to($screen991) {
+            margin-right: 50px;
+        }
+        @include respond-to($screen767) {
+            max-width: 100%;
+        }
+        p {
+            line-height: 1.5;
+            opacity: 0.5;
+            @extend %font24;
+            @include respond-to($screen991) {
+                font-size: 15px;
+            }
+            @include respond-to($screen600) {
+                font-size: 14px !important;
+            }
+        }
+    }
+}
+
+//exp  ************************
+.exp {
+    position: relative;
+    padding-bottom: 0;
+    .sec-title-cover {
+        @extend %pl375;
+    }
+    .sec-no {
+        @extend %pl375;
+    }
+    .expimg-cover {
+        width: 100%;
+        max-width: 80%;
+        position: absolute;
+        left: 0;
+        top: 315px;
+        @include respond-to($screen1199) {
+            top: 255px;
+        }
+        @include respond-to($screen991){
+            top: 200px;
+        }
+        @include respond-to($screen767) {
+            top: 120px;
+        }
+        @include respond-to($screen600) {
+            top: 100px;
+            max-width: 90%;
+        }
+
+        .theme-img {
+            padding-top: 50%;
+        }
+    }
+    .sec-space {
+        width: 100%;
+        padding-top: 34%;
+    }
+    .expdes-cover {
+        width: 100%;
+        background-color: $bgcolor3;
+        @extend %pl375;
+        @include respond-to($screen600) {
+            padding-bottom: 15px;
+        }
+
+        .exp-des {
+            background-color: $bgcolor5;
+            width: 100%;
+            padding: 16% 0 65px 45px;
+            max-width: 1520px;
+            margin-left: auto;
+            @include respond-to($screen1325) {
+                padding-bottom: 45px;
+            }
+            @include respond-to($screen1280) {
+                padding-top: 18%;
+            }
+            @include respond-to($screen1024) {
+                padding-top: 22%;
+            }
+            @include respond-to($screen991) {
+                padding-top: 22%;
+            }
+            @include respond-to($screen767) {
+                padding: 15% 0 30px 30px;
+            }
+            @include respond-to($screen600) {
+                padding: 22% 0 15px 15px;
+            }
+            .exp-text {
+                max-width: 1199px;
+                color: $color2;
+                opacity: 50%;
+                font-size: $font18;
+                margin-right: 30px;
+                @include respond-to($screen991) {
+                    font-size: 14px;
+                }
+                @include respond-to($screen767) {
+                    line-height: 1.5;
+                }
+                @include respond-to($screen600) {
+                    line-height: 1.3;
+                }
+            }
+        }
+    }
+}
+
+.spec {
+    color: $color2;
+    background-color: $bgcolor3;
+}
+//values  ************************
+.values {
+    @extend %pl375;
+    background-color: $bgcolor3;
+    position: relative;
+    color: $color2;
+    @include respond-to($screen767) {
+        padding-top: 60px;
+    }
+
+    .secleft-line {
+        color: $color2;
+    }
+    .sec-no {
+        color: $color2;
+    }
+    img.h100{
+        height: 100%;
+    }
+    .sec-title {
+        color: $color2;
+
+        @include respond-to($screen600) {
+            letter-spacing: 0.5px;
+        }
+    }
+    .val-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .val-title{
+        margin: 0;
+        @include respond-to($screen1440) {
+            line-height: 1.3;
+        }
+        @include respond-to($screen1199) {
+            letter-spacing: -1px;
+        }
+        @include respond-to($screen991){
+            letter-spacing: 0;
+        }
+        
+    }
+    .val-subtitle{
+        font-size: 20px;
+        max-width: 90%;
+        @include respond-to($screen991){
+            font-size: 16px;
+        }
+        @include respond-to($screen600){
+            font-size: 14px;
+            max-width: 100%;
+            padding-right: 15px;
+        }
+    }
+    .val-text-cover {
+        flex: 0 0 40%;
+        max-width: 40%;
+        padding: 15px;
+        @include respond-to($screen1024){
+            flex: 0 0 33.33%;
+            max-width: 33.33%;
+        }
+        @include respond-to($screen767) {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+        .val-text {
+            font-size: 18px;  
+            @include respond-to($screen1024){
+                line-height: 1.3;
+            }  
+            @include respond-to($screen991){
+                font-size: 15px;
+            }
+        }
+    }
+    .valuesbox-cover {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 50px;
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 15px;
+        padding-left: 0;
+        
+        @include respond-to($screen991){
+            margin-top: 0;
+        }
+        @include respond-to($screen767) {
+            margin-top: 20px;
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+        @include respond-to($screen767) {
+            margin-top: 0;
+        }
+        @include respond-to($screen600){
+            padding-left: 0;
+        }
+        .values-box {
+            flex: 0 0 33.33%;
+            max-width: 33.33%;
+            padding: 50px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            @include respond-to($screen1199) {
+                padding: 30px;
+            }
+            @include respond-to($screen1024){
+                padding: 22px;
+            }
+            @include respond-to($screen991){
+                flex: 0 0 50%;
+                max-width: 50%;
+                padding: 30px;
+            }
+            @include respond-to($screen600){
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            position: relative;
+            .valbx-titlecover{
+                display: flex;
+                align-items: center;
+                margin: 10px 0;
+            }
+            .values-img {
+                height: 50px;
+                width: 50px;
+                min-width: 50px;
+                margin-right: 20px;
+                @include respond-to($screen1199) {
+                    margin-right: 5px;
+                }
+                @include respond-to($screen991){
+                    margin-right: 10px;
+                    height: 40px;
+                    width: 40px;
+                    max-width: 40px;
+                    min-width: 40px;
+                }
+            }
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                bottom: 10px;
+                border: 1px solid $bordercolor6;
+            }
+           
+            
+            .values-text {
+                color: $color6;
+                font-size: $font18;
+                flex: 1;
+                @include respond-to($screen1366) {
+                    line-height: 1.3;
+                }
+                @include respond-to($screen991) {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+//blog  ************************
+.main-cover {
+    &.hp{
+        .blog{
+            .container{
+                @include respond-to($screen991) {
+                  max-width: 100%;
+                }
+            }
+        }
+    }
+}
+//portfolio  ************************
+.portfolio {
+    @extend %pl375;
+    position: relative;
+    color: $color2;
+    background-color: $bgcolor3;
+    @extend %pr175;
+    h3 {
+        @include respond-to($screen991) {
+            margin: 5px 0;
+        }
+        @include respond-to($screen767) {
+            font-size: 17px;
+        }
+    }
+    .port-cover {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .port-subtitle {
+        font-size: 22px;
+        max-width: 700px;
+        @include respond-to($screen1199){
+            line-height: 1.3;
+            margin-top: 15px;
+        }
+        @include respond-to($screen991) {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    }
+    .portleft-cover {
+        flex: 0 0 50%;
+        max-width: 50%;
+        @include respond-to($screen600) {
+            flex: 0 0 100%;
+            max-width: 100%;
+            order: 2;
+        }
+        .port-left {
+            margin-top: 50px;
+            width: 100%;
+            max-width: 484px;
+            border-radius: 10px;
+            border: 1px solid $bordercolor2;
+            padding: 30px 70px 30px 30px;
+            @include respond-to($screen1199) {
+                padding: 15px 30px 20px 20px;
+            }
+            @include respond-to($screen991) {
+                padding: 15px;
+            }
+            @include respond-to($screen767){
+                margin: 0 auto;
+            }
+            .portleft-text {
+                color: $bordercolor6;
+                @include respond-to($screen991) {
+                    line-height: 1.5;
+                }
+                @include respond-to($screen767) {
+                    font-size: 13px;
+                }
+            }
+            .theme-btn3 {
+                text-transform: inherit;
+                font-size: $font15;
+                line-height: 1.8;
+                @include respond-to($screen991) {
+                    margin-top: 5px;
+                }
+                @include respond-to($screen767) {
+                    letter-spacing: -0.5px;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+    .portright-cover {
+        flex: 0 0 50%;
+        max-width: 50%;
+        @include respond-to($screen600) {
+            flex: 0 0 70%;
+            max-width: 70%;
+            margin: 0 auto;
+        }
+        .portimg-cover {
+            @include respond-to($screen1780) {
+                margin-top: 0;
+            }
+            .theme-img {
+                padding-top: 90%;
+                @include respond-to($screen1280) {
+                    padding-top: 110%;
+                }
+                img {
+                    object-fit: contain;
+                    object-position: center;
+                }
+            }
+        }
+    }
+    .slick-prev {
+        position: relative;
+        font-size: 0;
+        opacity: 0.3;
+        transition: 0.5s;
+        @include respond-to($screen600){
+            left: 50%;
+            transform: translateX(-33px);
+        }
+        &:hover {
+            opacity: 1;
+        }
+        &:before {
+            position: absolute;
+            content: "";
+            background-image: url(#{$imagesPath}/arrow-left.png);
+            width: 30px;
+            display: block;
+            left: 0;
+            top: 0;
+            z-index: 99;
+            height: 30px;
+            background-size: contain;
+            @include respond-to($screen991) {
+                height: 22px;
+                width: 22px;
+            }
+        }
+    }
+    .slick-next {
+        @extend .slick-prev;
+        &:before {
+            position: absolute;
+            content: "";
+            background-image: url(#{$imagesPath}/arrow-right.png);
+            width: 30px;
+            display: block;
+            left: 60px;
+            top: 2px;
+            z-index: 99;
+            height: 26px;
+            background-size: contain;
+            @include respond-to($screen991) {
+                height: 19px;
+                width: 22px;
+                left: 40px;
+            }
+            
+        }
+    }
+}
+
+//insta  ************************
+.insta {
+    @extend %pl375;
+    background-color: $bgcolor3;
+    color: $color2;
+    position: relative;
+    padding-bottom: 0;
+    .instabox-cover {
+        background-color: $bgcolor5;
+        padding: 57px 0 57px 70px;
+        position: relative;
+        @include respond-to($screen1024) {
+            padding: 57px 0 57px 57px;
+        }
+        @include respond-to($screen991) {
+            padding: 30px 0 50px 30px;
+        }
+        @include respond-to($screen767) {
+            padding-bottom: 30px;
+        }
+        @include respond-to($screen600) {
+            padding: 15px;
+        }
+
+        .insta-btn {
+            color: #ec6737;
+            font-size: $font28;
+            line-height: 1;
+            font-weight: $font-bold;
+            display: block;
+            margin-top: auto;
+            letter-spacing: 1px;
+            @include respond-to($screen1024) {
+                font-size: 22px;
+            }
+            @include respond-to($screen767) {
+                font-size: 18px;
+            }
+        }
+        .instaleft {
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 28%;
+            max-width: 28%;
+            @include respond-to($screen600){
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+        .theme-btn3 {
+            &:before {
+                height: 10px;
+            }
+        }
+        &:before {
+            content: "";
+            position: absolute;
+            bottom: -85px;
+            left: 10%;
+            padding: 9%;
+            background-image: url(#{$imagesPath}/insta-bg.png);
+            background-size: contain;
+            @include respond-to($screen991) {
+                left: 18%;
+                bottom: -50px;
+            }
+            @include respond-to($screen600) {
+                top: 50%;
+                left: inherit;
+                right: 30px;
+                bottom: inherit;
+            }
+        }
+        .insta-text {
+            max-width: 235px;
+            color: $color6;
+            margin-top: 30px;
+            @include respond-to($screen767) {
+                margin-top: 20px;
+            }
+            @include respond-to($screen600) {
+                max-width: 100%;
+            }
+        }
+        .theme-btn3 {
+            text-transform: inherit;
+            font-size: $font15;
+            line-height: 1.8;
+            margin-right: auto;
+            &:after,
+            &:before {
+                background-color: $bgcolor5;
+            }
+        }
+        .instabox-inner {
+            display: flex;
+            // flex-wrap: wrap;
+            @include respond-to($screen991) {
+                align-items: flex-start;
+            }
+            @include respond-to($screen600) {
+                flex-wrap: wrap;
+            }
+        }
+        .instaright {
+            flex: 0 0 72%;
+            max-width: 72%;
+            display: flex;
+            flex-wrap: wrap;
+            padding-left: 1%;
+            margin-bottom: -190px;
+            margin-top: 30px;
+            @include respond-to($screen1199) {
+                margin-bottom: -110px;
+                overflow: hidden;
+            }
+            @include respond-to($screen600) {
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin-bottom: -70px;
+                padding: 0;
+            }
+            a {
+                img {
+                    transform: scale(1.2);
+                    transition: 0.5s;
+                }
+                &:hover {
+                    img {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+            .insta-post1 {
+                max-width: 32%;
+                flex: 0 0 32%;
+                padding: 3px;
+                @include respond-to($screen600) {
+                    flex: 0 0 50%;
+                    max-width: 50%;
+                    .theme-img {
+                        padding-top: 70% !important;
+                    }
+                }
+                .theme-img {
+                    padding-top: 70% !important;
+                }
+            }
+            .insta-post2 {
+                max-width: 36.5%;
+                flex: 0 0 36.5%;
+                padding: 3px;
+                @include respond-to($screen600) {
+                    flex: 0 0 50%;
+                    max-width: 50%;
+                    .theme-img {
+                        padding-top: 70% !important;
+                    }
+                }
+                .theme-img {
+                    padding-top: 61%;
+                }
+            }
+            .insta-post3 {
+                max-width: 22.6%;
+                flex: 0 0 22.6%;
+                padding: 3px;
+                @include respond-to($screen600) {
+                    flex: 0 0 50%;
+                    max-width: 50%;
+                    display: none;
+                    .theme-img {
+                        padding-top: 70% !important;
+                    }
+                }
+                .theme-img {
+                    padding-top: 100.2%;
+                }
+            }
+            .insta-post4 {
+                max-width: 30%;
+                flex: 0 0 30%;
+                padding: 3px;
+                @include respond-to($screen600) {
+                    flex: 0 0 50%;
+                    max-width: 50%;
+                    .theme-img {
+                        padding-top: 70% !important;
+                    }
+                }
+                .theme-img {
+                    padding-top: 100%;
+                }
+            }
+            .insta-post5 {
+                max-width: 61%;
+                flex: 0 0 61%;
+                padding: 3px;
+                @include respond-to($screen600) {
+                    flex: 0 0 50%;
+                    max-width: 50%;
+                    .theme-img {
+                        padding-top: 70% !important;
+                    }
+                }
+                .theme-img {
+                    padding-top: 48.5%;
+                }
+            }
+        }
+    }
+}
+
+//testimonial  ************************
+.tstmnl {
+    position: relative;
+    @extend %pl375;
+    margin-top: 100px;
+    @include respond-to($screen767) {
+        margin-top: 70px;
+    }
+    .tstmnl-subtitle {
+        font-size: 22px;
+        margin-top: 12px;
+        @include respond-to($screen991) {
+            font-size: 16px;
+        }
+    }
+    .tstmnl-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-top: 70px;
+        @include respond-to($screen767) {
+            margin-top: 30px;
+        }
+        .tstmnl-left {
+            flex: 0 0 40%;
+            max-width: 40%;
+            padding: 0 15px;
+            @include respond-to($screen600) {
+                flex: 0 0 60%;
+                max-width: 60%;
+                margin: 0 auto 30px;
+                padding-left: 0;
+            }
+            .google-img-cover {
+                max-width: 350px;
+                margin: 0 auto;
+                position: relative;
+                @include respond-to($screen1199) {
+                    max-width: 300px;
+                }
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 10px;
+                    left: -10px;
+                    right: 10px;
+                    bottom: -10px;
+                    z-index: -1;
+                    border: 1px solid $bordercolor3;
+                }
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: -10px;
+                    left: 10px;
+                    right: -10px;
+                    bottom: 10px;
+                    border: 1px solid $bordercolor3;
+                }
+                .theme-img {
+                    padding-top: 130%;
+                }
+            }
+        }
+        .tstmnl-right {
+            flex: 0 0 60%;
+            max-width: 60%;
+            padding: 0 15px;
+            @include respond-to($screen600) {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding-left: 0;
+            }
+            
+            .tm-no {
+                margin-bottom: 50px;
+                display: block;
+                color: $color6;
+                @include respond-to($screen991) {
+                    margin-bottom: 20px;
+                }
+            }
+            .review-box {
+                border: 2px solid $bordercolor3;
+                padding: 30px 20px;
+                max-width: 500px;
+                position: relative;
+                @include respond-to($screen991) {
+                    padding: 20px 15px;
+                }
+                @include respond-to($screen767) {
+                    padding: 15px;
+                }
+                @include respond-to($screen600) {
+                 margin: 0 auto;
+                }
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: -25px;
+                    right: 50px;
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 50%;
+                    background-image: url(#{$imagesPath}/google.png);
+                    background-size: contain;
+                    background-position: center;
+                }
+
+                .client-profile {
+                    display: flex;
+                    align-items: center;
+                    .clntimg-cover {
+                        border-radius: 50%;
+                        height: 60px;
+                        width: 60px;
+                        overflow: hidden;
+                        border: 2px solid $bordercolor4;
+                        margin-right: 15px;
+                        @include respond-to($screen991) {
+                            height: 50px;
+                            width: 50px;
+                        }
+                        img {
+                            object-fit: contain;
+                        }
+                    }
+                }
+                .clntname-cover {
+                    h4 {
+                        font-size: $font20;
+                        line-height: 1;
+                        margin-bottom: 5px;
+                        @include respond-to($screen991) {
+                            font-size: 16px;
+                        }
+                    }
+                    .stars {
+                        display: flex;
+                        svg {
+                            margin-right: 5px;
+                            height: 16px;
+                            width: 16px;
+                            fill: orange;
+                            @include respond-to($screen991) {
+                                height: 12px;
+                                width: 12px;
+                            }
+                        }
+                    }
+                }
+                .clnt-text {
+                    margin: 10px 0;
+                    @include respond-to($screen991) {
+                        line-height: 1.5;
+                    }
+                    @include respond-to($screen767) {
+                        font-size: 12px;
+                        margin: 5px 0;
+                    }
+                }
+                .clnt-bsns {
+                    color: $color6;
+                }
+            }
+        }
+    }
+}
+ul.slick-dots {
+    display: flex !important;
+    justify-content: center;
+    max-width: 500px;
+    @include respond-to($screen600) {
+        max-width: 100%;
+    }
+    li {
+        button {
+            height: 2px;
+            width: 30px;
+            background-color: $bgcolor6;
+            font-size: 0;
+            margin: 0 4px;
+            opacity: 0.5;
+        }
+        &.slick-active {
+            button {
+                opacity: 1;
+                background-color: $bgcolor3;
+            }
+        }
+    }
+}
+
+.getintouch {
+    &.hp {
+        @include respond-to($screen1199){
+            padding-top: 50px;
+        }
+        .gitform-title {
+            font-size: 40px !important;
+            @include respond-to($screen1199) {
+                font-size: 28px !important;
+            }
+            @include respond-to($screen600){
+                font-size: 20px !important;
+            }
+        }
+        .git-form {
+            max-width: 100% !important;
+            padding: 30px 20px !important;
+            margin-bottom: 0 !important;
+        }
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .select-cover {
+            max-width: 100%;
+            flex: 0 0 100%;
+            margin: 15px 0;
+            select {
+                max-width: 100%;
+                flex: 0 0 100%;
+            }
+        }
+        label {
+            display: none;
+        }
+        input {
+            flex: 0 0 48%;
+            max-width: 48%;
+            margin: 15px 1%;
+            @include respond-to($screen600){
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin: 15px 0s;
+            }
+        }
+    }
+}

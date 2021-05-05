@@ -1,0 +1,324 @@
+//------------------------------------------
+// PREFIX 1
+//------------------------------------------
+
+@mixin prefixcss($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: $value;
+  }
+  // Output standard non-prefixed declaration
+  #{$property}: $value;
+
+  // @include prefixcss(transform, rotate(45deg), webkit ms);
+}
+
+// cross browser mixin ***************************************************
+
+//------------------------------------------
+// IE
+//------------------------------------------
+@mixin IE {
+  @media screen and (min-width: 0\0) {
+    @content;
+  }
+}
+
+//------------------------------------------
+// Edge
+//------------------------------------------
+@mixin edge {
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
+}
+
+//------------------------------------------
+// print
+//------------------------------------------
+@mixin print {
+  @media print {
+    @content;
+  }
+}
+
+// responsive screen  ***************************************************
+
+//------------------------------------------
+// responsive screen
+//------------------------------------------
+
+@mixin respond-to($class) {
+  @if $class == $screen2000 {
+    @media only screen and (max-width: $screen2000) {
+      @content;
+    }
+  }
+  @if $class == $screen1780 {
+    @media only screen and (max-width: $screen1780) {
+      @content;
+    }
+  }
+  @if $class == $screen1600 {
+    @media only screen and (max-width: $screen1600) {
+      @content;
+    }
+  }
+  @if $class == $screen1440 {
+    @media only screen and (max-width: $screen1440) {
+      @content;
+    }
+  }
+  @if $class == $screen1366 {
+    @media only screen and (max-width: $screen1366) {
+      @content;
+    }
+  }
+  @if $class == $screen1325 {
+    @media only screen and (max-width: $screen1325) {
+      @content;
+    }
+  }
+  @if $class == $screen1280 {
+    @media only screen and (max-width: $screen1280) {
+      @content;
+    }
+  }
+  @if $class == $screen1199 {
+    @media only screen and (max-width: $screen1199) {
+      @content;
+    }
+  }
+  @if $class == $minscreen1200 {
+    @media only screen and (min-width: $minscreen1200) {
+      @content;
+    }
+  }
+  @if $class == $screen1024 {
+    @media only screen and (max-width: $screen1024) {
+      @content;
+    }
+  }
+  @if $class == $screen991 {
+    @media only screen and (max-width: $screen991) {
+      @content;
+    }
+  }
+  @if $class == $minscreen992 {
+    @media only screen and (min-width: $minscreen992) {
+      @content;
+    }
+  }
+  @if $class == $minscreen768 {
+    @media only screen and (min-width: $minscreen768) {
+      @content;
+    }
+  }
+  @if $class == $screen767 {
+    @media only screen and (max-width: $screen767) {
+      @content;
+    }
+  }
+  @if $class == $screen660 {
+    @media only screen and (max-width: $screen660) {
+      @content;
+    }
+  }
+  @if $class == $screen600 {
+    @media only screen and (max-width: $screen600) {
+      @content;
+    }
+  }
+  @if $class == $minscreen576 {
+    @media only screen and (min-width: $minscreen576) {
+      @content;
+    }
+  }
+  @if $class == $screen500 {
+    @media only screen and (max-width: $screen500) {
+      @content;
+    }
+  }
+  @if $class == $screen435 {
+    @media only screen and (max-width: $screen435) {
+      @content;
+    }
+  }
+  @if $class == $screen375 {
+    @media only screen and (max-width: $screen375) {
+      @content;
+    }
+  }
+  @if $class == $screen360 {
+    @media only screen and (max-width: $screen360) {
+      @content;
+    }
+  }
+  @if $class == $screen320 {
+    @media only screen and (max-width: $screen320) {
+      @content;
+    }
+  }
+}
+
+// images path  ***************************************************
+
+$imagesPath: "../images";
+@function images($imagesPath) {
+  @return $imagesPath;
+}
+// url(#{$imagesPath}/demo.png);
+
+// inner mixin  ***************************************************
+
+//------------------------------------------
+// button mixin
+//------------------------------------------
+
+@mixin btn($background: $bgcolor2, $textcolor: $color3) {
+  appearance: none;
+  user-select: none;
+  transition: all 0.3s ease;
+  border-radius: 0;
+  display: inline-block;
+  box-shadow: none;
+  border: 0;
+  cursor: pointer;
+  font-size: $font20;
+  font-weight: $font-regular;
+  line-height: 1.4;
+  margin-top: 20px;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+  padding-right: 40px;
+  @include respond-to($screen991) {
+    font-size: 14px;
+    line-height: 2;
+}
+@include respond-to($screen767) {
+  margin-top: 10px;   
+  padding-right: 30px;
+  letter-spacing: -.5px;
+ }
+
+  svg{
+    max-width: 18px;
+    fill: $color3;
+    margin-left: 12px;
+    right: 3px;
+    position: absolute;
+    top: 5px;
+  }
+  
+  &:after{
+    content: "";
+    transition: .5s; 
+    position: absolute;
+    height: 26px; 
+    width: 26px;
+    border-bottom: 2px solid $bordercolor3;
+    top: -11px;
+    right: 0;
+    background-color: #000;
+    @include respond-to($screen767) {
+      width: 18px;   
+     }
+    
+  }
+  &:before {
+    content: "";
+    transition: .5s;
+    border-top: 2px solid $bordercolor3;
+    border-bottom: 0;
+    height: 9px;
+    width: 26px;
+    top: 13px;
+    background-color: #000;
+    position: absolute;
+    z-index: 9;
+    right: 0;
+    @include respond-to($screen767) {
+      width: 18px;   
+     }
+  }
+  &:hover{
+    &:before{
+      top: 25px;
+    }
+  }
+  &:hover{
+    &:after {
+      top: -23px;
+    }
+  }
+  @if ($background == $bgcolor2) {
+    
+  } @else if ($background == $bgcolor3) {
+    color: $color2;
+    &:after, &:before{
+      background-color: $bgcolor5;
+      border-color: $bordercolor2;
+    }
+    svg{
+      fill: $color2;
+    }
+    &:hover{
+      color: $color2
+    }
+
+  } @else if ($background == $bgcolor4) {
+    color: $color2;
+    &:after, &:before{
+      background-color: $bgcolor3;
+      border-color: $bordercolor2;
+    }
+    svg{
+      fill: $color2;
+    }
+    &:hover{
+      color: $color2
+    }
+    
+  }
+}
+
+
+  .theme-btn2 {
+    @include btn($bgcolor3);
+  }
+  .theme-btn3 {
+    @include btn($bgcolor4);
+    &:focus{
+      color: $color2;
+    }
+  }
+
+
+//------------------------------------------
+// placeholder mixin
+//------------------------------------------
+
+@mixin placeholder {
+  ::placeholder {
+    @content;
+  }
+  ::-webkit-placeholder {
+    @content;
+  }
+  :-moz-placeholder {
+    @content;
+  }
+  ::-moz-placeholder {
+    @content;
+  }
+  ::-ms-placeholder {
+    @content;
+  }
+  :-ms-placeholder {
+    @content;
+  }
+}

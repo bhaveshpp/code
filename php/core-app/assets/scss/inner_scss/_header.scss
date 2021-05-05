@@ -1,0 +1,518 @@
+/**********************************************************
+//////////////////    header    ///////////////////////////
+**********************************************************/
+$demo: 55px 125px 55px 130px;
+.header {
+    position: absolute;
+    width: 100%;
+    z-index: 99999;
+    .header-cover {
+        padding: $demo;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include respond-to($screen1780){
+            padding: 40px 100px;
+        }
+        @include respond-to($screen1440){
+            padding: 30px 50px;
+        }
+        @include respond-to($screen767) {
+          padding: 20px 30px;
+         }
+         @include respond-to($screen600) {
+            padding: 20px 15px;
+           }
+        .menu-toggler {
+            &:hover {
+                filter: drop-shadow(0 0 5px $color3);
+            }
+            span {
+                height: 3px;
+                width: 34px;
+                background-color: $color3;
+                display: block;
+                margin: 9px 0;
+                transition: 0.5s;
+                @include respond-to($screen767) {
+                    width: 22px;
+                    height: 2px;
+                    margin: 6px 0;
+                 }
+            }
+            &.active {
+                span {
+                    &:first-child {
+                        transform: translate(0px, 4px) rotate(45deg);
+                        @include respond-to($screen767){
+                            transform: translate(0px, 2px) rotate(45deg)
+                        }
+                    }
+                    &:last-child {
+                        transform: translate(0px, -8px) rotate(-45deg);
+                        @include respond-to($screen767){
+                            transform: translate(0px, -6px) rotate(-45deg);
+                        }
+                    }
+                }
+            }
+        }
+        .header-logo {
+            width: 100%;
+            max-width: 228px;
+            margin-right: auto;
+            margin-left: 46px;
+            @include respond-to($screen1024){
+                max-width: 180px;
+              }
+              @include respond-to($screen991){
+                margin-left: 30px;
+            }
+            @include respond-to($screen767) {
+               max-width: 150px;
+               margin-left: 15px;  
+             }
+             @include respond-to($screen600) {
+                max-width: 150px;
+                margin-left: 10px;
+            }
+        }
+        .get-quote {
+            display: flex;
+            align-items: center;
+            font-size: $font20;
+            @include respond-to($screen991) {
+                font-size: 16px;
+            }
+            @include respond-to($screen767) {
+              font-size: 14px;
+             }
+             @include respond-to($screen600) {
+                font-size: 12px;
+            }
+            span {
+                height: 2px;
+                width: 26px;
+                background-color: $color3;
+                display: block;
+                margin: 5px 0;
+                margin-left: 15px;
+                transition: 0.5s;
+                @include respond-to($screen600) {
+                    width: 18px;
+                }
+            }
+            &:hover {
+                filter: drop-shadow(0 0 5px $color3);
+                span {
+                    width: 0;
+                }
+            }
+        }
+    }
+}
+
+.header-dark{
+    .menu-toggler{
+        span{
+            background-color: $color2 !important;
+        }
+    }
+    .header-logo {
+        img{
+            filter: invert(1);
+        }
+    }
+    .get-quote{
+        color: $color2;
+        span{
+            background-color: $color2 !important;
+        }
+    }
+}
+body{
+    &.active{
+        .header-dark{
+            .menu-toggler{
+                span{
+                    background-color: $color3 !important;
+                }
+            }
+        }
+    }
+}
+//mega-menu  **********************************
+.mega-menu {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: none;
+    padding: 135px 0 75px;
+    transition: .5s;
+    .mm-canvas{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        opacity: 0;
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    .mmbg-cover {
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        z-index: 2;
+        opacity: 0;
+    }
+    &:before {
+        content: "";
+        position: absolute;
+        width: 50%;
+        max-width: 50%;
+        top: 0;
+        left: 0;
+        bottom: 100%;
+        background-color: #111;
+    }
+    &:after {
+        content: "";
+        position: absolute;
+        width: 50%;
+        max-width: 50%;
+        top: 100%;
+        right: 0;
+        bottom: 0;
+        background-color: #111;
+    }
+    &.active {
+        display: block;
+        &:after {
+            top: 0;
+            animation: rgtlayer 0.2s linear 1;
+        }
+        &:before {
+            bottom: 0;
+            animation: lftlayer 0.2s linear 1;
+        }
+    }
+    .mm-inner {
+        z-index: 99999;
+        position: relative;
+        max-width: 1560px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0;
+        @include respond-to($screen1780){
+            max-width: 1400px;
+        }
+        @include respond-to($screen1440){
+            max-width: 1200px;
+        }
+        @include respond-to($screen1280){
+            max-width: 100%;
+            padding: 0 50px;
+        }
+        @include respond-to($screen1199){
+            padding: 0 25px;
+        }
+        .mm-lft {
+            flex: 0 0 60%;
+            max-width: 60%;
+            padding: 0 20px;
+            @include respond-to($screen1024){
+                flex: 0 0 55%;
+                max-width: 55%;
+            }
+            @include respond-to($screen767){
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            @include respond-to($screen600){
+                padding: 0;
+            }
+            
+            .mm-title {
+                font-size: 20px;
+                color: $color6;
+                border-bottom: 1px solid rgba($bordercolor6,.7);
+                @include respond-to($screen600){
+                    display: none;
+                }
+            }
+            .mm-list {
+                margin-top: 50px;
+                column-count: 2;
+                @include respond-to($screen1199){
+                    margin-top: 30px;
+                }
+                @include respond-to($screen600){
+                    column-count: 1;
+                }
+                .mm-item {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 130px;
+                    @include respond-to($screen1780){
+                        margin-bottom: 80px;
+                    }
+                    @include respond-to($screen1280){
+                       margin-bottom: 60px;
+                    }
+                    @include respond-to($screen600){
+                        margin-bottom: 10px;
+                        padding: 15px 0;
+                        border-bottom: 1px solid rgba($bordercolor6,.7);
+                    }
+                    @include respond-to($screen435){
+                        padding: 12px 0;
+                    }
+                    &:hover {
+                        .mm-link {
+                            &:after {
+                                max-width: 58px;
+                            }
+                        }
+                    }
+                    .mm-no {
+                        font-size: $font20;
+                        margin-right: 25px;
+                        font-weight: $font-light;
+                        @include respond-to($screen991){
+                         margin-right: 10px;
+                        }
+                        @include respond-to($screen767){
+                            font-size: 17px;
+                            color: $color6;
+                            width: 30px;
+                        }
+                    }
+                    .mm-link {
+                        font-size: $font32;
+                        position: relative;
+                        @include respond-to($screen1280){
+                         font-size: 28px;
+                        }
+                        @include respond-to($screen1024){
+                            font-size: 24px;
+                        }
+                        @include respond-to($screen991){
+                            font-size: 20px;
+                        }
+                        @include respond-to($screen435){
+                            font-size: 17px;
+                        }
+
+                        &:before {
+                            content: "";
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            height: 1px;
+                            width: 100%;
+                            max-width: 58px;
+                            opacity: .7;
+                            background-color: $bordercolor6;
+                            @include respond-to($screen600){
+                                display: none;
+                            }
+                        }
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            height: 1px;
+                            width: 100%;
+                            max-width: 0;
+                            background-color: $bordercolor3;
+                            transition: 0.5s;
+                            box-shadow: 0 0 3px $bordercolor3;
+                            @include respond-to($screen600){
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .mm-rgt {
+            flex: 0 0 40%;
+            max-width: 40%;
+            padding: 0 20px;
+            @include respond-to($screen1024){
+                flex: 0 0 45%;
+                max-width: 45%;
+            }
+            @include respond-to($screen991){
+                padding: 0;
+            }
+            @include respond-to($screen767){
+                display: none;
+            }
+
+            .mm-title {
+                font-size: 20px;
+                color: $color6;
+                border-bottom: 1px solid rgba($bordercolor6,.7);
+            }
+            .mmrgt-list {
+                margin-top: 50px;
+                @include respond-to($screen1199){
+                    margin-top: 30px;
+                }
+                .mmrgt-item {
+                    font-weight: $font-light;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 30px;
+                    @include respond-to($screen1199){
+                        margin-bottom: 20px;
+                        font-size: 14px;
+                    }
+                    @include respond-to($screen991){
+                        font-size: 12px;
+                    }
+                    
+                    &:before {
+                        content: "";
+                        display: block;
+                        height: 1px;
+                        width: 26px;
+                        background-color: $bordercolor3;
+                        margin-right: 20px;
+                        @include respond-to($screen1199){
+                         width: 18px;
+                        }
+                    }
+                }
+            }
+        }
+        .mmbtm-block {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+            margin-top: 25px;
+            border-top: 1px solid rgba($bordercolor6,.7);
+            padding-top: 25px;
+            @include respond-to($screen600){
+                margin-top: 0;
+                border: 0;
+            }
+
+            .ftricon-list {
+                flex-direction: row;
+                .ftricon-item {
+                    margin-right: 25px;
+                    margin-bottom: 0;
+                    display: flex;
+                    align-items: center;
+                    font-size: $font13;
+                    @include respond-to($screen600){
+                        font-size: 0;
+                    }
+                    @include respond-to($screen435){
+                        margin-right: 5px;
+                    }
+                    .ftricon-link{
+                        margin-right: 10px;
+                        height: 32px;
+                        width: 32px;
+                        font-size: $font13;
+                        line-height: 32px;
+                        &:after{
+                            border-width: 2px 0 2px 0;
+                        }
+                        &:before{
+                            border-width: 0 2px 0 2px;
+                        }
+                    }
+                }
+            }
+            .mmbtm-text {
+                color: $color6;
+                text-decoration: underline;
+                @include respond-to($screen600){
+                    font-size: 11px;
+                    letter-spacing: -.4px;
+                }
+                &:hover {
+                    color: $color3;
+                }
+            }
+        }
+    }
+}
+.mega-menu{
+    &.active{
+        display: flex;
+        align-items: center;
+        padding: 0;
+        .mm-inner{
+            opacity: 1;
+        animation: fadeffect .8s linear 1;
+
+        }
+        .mmbg-cover{
+            opacity: 1;
+        animation: fadeffect .8s linear 1;
+
+        }
+        .mm-canvas{
+            opacity: 1;
+        animation: fadeffect .8s linear 1;
+
+        }
+    }
+}
+
+@keyframes rgtlayer {
+    from {
+        top: 100%;
+    }
+    to {
+        top: 0;
+    }
+}
+@keyframes lftlayer {
+    from {
+        bottom: 100%;
+    }
+    to {
+        bottom: 0;
+    }
+}
+.home_page {
+    &.active {
+        overflow: hidden;
+
+        .header-logo {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .get-quote {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+}
+
+@keyframes fadeffect{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}

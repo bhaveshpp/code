@@ -1,0 +1,165 @@
+/**********************************************************
+//////////////////    Services page    ////////////////////////
+**********************************************************/
+.service-page .tstmnl{
+    margin-top: 0;
+}
+.serp-bnr{
+    height: 100vh;
+    padding: 0;
+    background-color: $bgcolor2;
+    
+    .container{
+        padding: 0 100px;
+        @include respond-to($screen1440){
+            padding: 0 15px;
+        }
+    }
+    .sec-inner{
+        height: 100vh;
+        align-items: center;
+        display: flex;
+        @include respond-to($screen767){
+            padding-top: 100px;
+        }
+        @include respond-to($screen600){
+            padding-top: 60px;
+        }
+        .serp-lft{
+            flex: 0 0 50%;
+            max-width: 50%;
+            @include respond-to($screen767){
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+        .serp-rgt{
+            @extend .serp-lft;
+            @include respond-to($screen600){
+               padding: 0;
+            }
+        }
+    }
+    .serp-bnr-titlecover{  
+        .serp-bnr-title{    
+            font-size: 50px;
+            line-height: 1.2;
+            font-weight: $font-light;
+            @include respond-to($screen1440){
+                font-size: 40px;
+            }
+            @include respond-to($screen991){
+                font-size: 30px;
+            }
+            @include respond-to($screen600){
+                font-size: 24px;
+            }
+        }
+        .serp-text {
+            font-size: 24px;
+            opacity: .6;
+            line-height: 1.3;
+            margin-top: 20px;
+            @include respond-to($screen1440){
+                font-size: 18px;
+            }
+            @include respond-to($screen991){
+                font-size: 16px;
+            }
+            @include respond-to($screen600){
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+
+
+.industries{
+    background-color: $bgcolor3;
+    color: $color2;
+    .sec-subtitle{
+    font-size: 22px;
+    max-width: 80%;
+    margin-top: -30px;
+    margin-bottom: 50px;
+    @include respond-to($screen1199){
+        max-width: 90%;
+        margin-top: -10px;
+    }
+    @include respond-to($screen991){
+        font-size: 16px;
+    }
+    @include respond-to($screen600){
+        max-width: 100%;
+        font-size: 14px;
+        margin-bottom: 30px;
+    }
+    }
+    .ind-bxcover{
+        flex: 0 0 25%;
+        max-width: 25%;
+        padding: 30px;
+        @include respond-to($screen1600) {
+            padding: 15px;
+        }
+        @include respond-to($screen1199){
+            flex: 0 0 33.33%;
+            max-width: 33.33%;
+        }
+        @include respond-to($screen991){
+            padding: 5px;
+        }
+        @include respond-to($screen600){
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+        .ind-bx{
+            position: relative;
+            .ind-bximg{
+                
+                .theme-img{
+                    padding-top: 100%;
+                }
+            }
+            .ind-bxicon{
+                position: absolute;
+                height: 70px;
+                width: 70px;
+                padding: 15px;
+                max-width: 70px;
+                background-color: rgba(247, 245, 244, 0.7);
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                @include respond-to($screen991){
+                    transform: translate(-50%, -50%) scale(0.7);
+                }
+                svg{
+                    fill: $color2;
+                    height: auto;
+                }
+            }
+        }
+        .ind-textcover{
+            text-align: center;
+            .ind-text{
+                font-size: 24px;
+                font-weight: $font-semibold;
+                line-height: 1.2;
+                margin-top: 12px;
+                @include respond-to($screen1440){
+                    font-size: 20px;
+                }
+                @include respond-to($screen991){
+                    font-size: 17px;
+                    letter-spacing: -.5px;
+                    margin-top: 5px;
+                }
+                @include respond-to($screen767){
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}
