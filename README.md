@@ -21,6 +21,13 @@ $logger->info('Price');
 $logger->log(100,print_r($items->getData(),true));
 ```
 
+Log for Magento 1
+
+```
+Mage::log(__FILE__.'::'.__LINE__,null,'test.log',true);
+
+```
+
 Use Objectmanager
 
 ```
