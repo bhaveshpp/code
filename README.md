@@ -25,6 +25,23 @@ $logger->log(100,print_r($items->getData(),true));
 
 ```
 
+Log for php
+
+```php
+
+    function testlog($txt)
+    {
+        file_put_contents('20210724-description-update.log', utf8_encode($txt).PHP_EOL , FILE_APPEND | LOCK_EX);
+        file_put_contents('20210724-description-update.log', $txt.PHP_EOL , FILE_APPEND | LOCK_EX);
+    }
+    testlog("Entity Id: ".$row['entity_id']);
+    testlog("Value Id: ".$row['value_id']);
+    testlog("Value: ".$row['value']);
+    testlog("");
+    testlog("********************************");
+
+```
+
 Log for Magento 1
 
 ```
