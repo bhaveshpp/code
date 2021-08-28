@@ -68,4 +68,11 @@ ini_set('memory_limit', -1);
 error_reporting(E_ALL);
 
 ```
+php trace as string
 
+```php 
+
+$e = new \Exception;
+var_dump($e->getTraceAsString());
+
+```
