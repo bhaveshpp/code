@@ -35,7 +35,7 @@ $connection = $this->resource->getConnection();
 
 Translate inline
 
-{% comment %} 
+{% raw %}
 ```
 <h1 class="hero-h1">{{trans "Welcome to this website" }}</h1>
 
@@ -56,4 +56,4 @@ Call CMS Block inside another CMS Block
 {{block type="cms/block" block_id="your_block_id"}}
 
 ```
-{% endcomment %}
+{% endraw %}
