@@ -5,6 +5,7 @@ vendor/magento/framework/Data/Collection.php
 vendor/magento/framework/App/FrontController.php
 vendor/magento/framework/App/Router/ActionList.php
 vendor/magento/framework/View/Layout/Builder.php
+\Magento\Framework\App\Http\Context::getVaryString
 
 # Admin login issue
 vendor/magento/module-backend/Model/Auth.php
