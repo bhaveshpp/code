@@ -69,6 +69,8 @@ Call CMS Block inside another CMS Block
 | Email Logo Image Height | {{var logo_height}} |
 | Email Logo Image Width | {{var logo_width}} |
 | Template CSS | {{var template_styles|raw}} |
+| Add config | {{config path='trans_email/ident_support/email'}} |
+
 
 ### Store contact information variables
 
