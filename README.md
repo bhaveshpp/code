@@ -6,6 +6,12 @@ log
 
 ```php
 
+// core
+
+error_log(print_r($queryString, 1)."\n", 3,BP."/var/log/test.log");
+
+//new
+
 $writer = new \Zend_Log_Writer_Stream(BP . '/var/log/test.log');
 $logger = new \Zend_Log();
 $logger->addWriter($writer);
