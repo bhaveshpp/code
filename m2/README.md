@@ -31,6 +31,114 @@ $connection = $this->resource->getConnection();
             return array_column($connection->fetchAll($select), 'entity_id');
 ```
 
+## root script
+
+```php
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+ini_set('memory_limit', -1);
+error_reporting(E_ALL);
+function prir($data = '') { error_log(print_r($data, true)."\n", 3, __DIR__.'/var/log/test.log'); }
+use Magento\Framework\App\Bootstrap;
+require 'app/bootstrap.php';
+try{
+    $bootstrap = Bootstrap::create(BP, $_SERVER);
+    $objectManager = $bootstrap->getObjectManager();
+
+    $state = $objectManager->get(\Magento\Framework\App\State::class);
+    $state->setAreaCode(\Magento\Framework\App\Area::AREA_FRONTEND);
+//    $classResource = $objectManager->create(\SeePossible\ReComputeBarcodeOrder\Model\ResourceModel\PriceDiff::class);
+//    $classFactory = $objectManager->create(\SeePossible\ReComputeBarcodeOrder\Model\PriceDiffFactory::class);
+//    $classObj = $classFactory->create();
+//    $classObj->setOrderItemId(3);
+//    $classObj->setCartRuleAction(json_encode(['key'=>'value']));
+//    print_r(get_class($classResource->save($classObj)));
+
+//    $class = $objectManager->get(\Magento\Sales\Model\OrderRepository::class);
+//    $class = $objectManager->get(\Magento\Sales\Model\Order\ItemRepository::class);
+//    $item = $class->get(1071);
+//    $class = $objectManager->get(\SeePossible\ReComputeBarcodeOrder\Model\OrderService::class);
+//    $class->updateOrderItem($item);
+//    $class = $objectManager->get(\Magento\SalesRule\Api\RuleRepositoryInterface::class);
+//
+//    $rule = $class->getById(77);
+//
+//    foreach ($rule->getCondition()->getConditions() as $condition){
+//        print_r(get_class_methods($condition));
+//
+//    }
+
+//    $class = $objectManager->get(\SeePossible\MonthlyPlan\Cron\UpdateEmiStatus::class);
+//    $class->execute();
+//    $class = $objectManager->get(\SeePossible\MonthlyPlan\Cron\SendReminder::class);
+//    $class->execute();
+//    $class = $objectManager->get(\SeePossible\MonthlyPlan\Cron\UpdateSubscriptionStatus::class);
+//    $class->execute();
+//    $class = $objectManager->get(\SeePossible\MonthlyPlan\Model\SubscriptionRepository::class);
+//    $order = $class->getById(1);
+//    echo $class->getMaturityAmount($order);
+//    echo $class->getPrincipalAmount($order);
+//    $class = $objectManager->get(\SeePossible\ReComputeBarcodeOrder\Model\OrderService::class);
+//    $class->saveOrderTimeSetting($order);
+//    $class = $objectManager->get(\SeePossible\MonthlyPlan\Helper\Data::class);
+//    echo $class->getBonusReduction(10000,2);
+//    $class = $objectManager->get(\SeePossible\SalesDocumentSeries\Helper\SeriesResetCron::class);
+//    $class->truncatSubsequenceTables('customer_gold_credit', 1);
+
+//    $class = $objectManager->get(\Magenest\InstagramShop\Model\CronJob\Photo::class);
+//    $class->getWebsiteScope();
+//    $class = $objectManager->get(\Magenest\InstagramShop\Model\CronJob\Story::class);
+//    $class->getInstagramStories();
+//    $class = $objectManager->get(\Magenest\InstagramShop\Model\CronJob\Story::class);
+//    $class->checkStoryExpiration();
+//    $class = $objectManager->get(\Magenest\InstagramShop\Model\CronJob\SearchHashtag::class);
+//    $class->getTopPhotos();
+
+//    $class = $objectManager->get(\Magenest\InstagramShop\Model\Indexer\Photo::class);
+//    $class->executeFull();
+//    $class = $objectManager->get(\Magenest\InstagramShop\Model\Indexer\TopPhotos::class);
+//    $class->executeFull();
+
+//    $class = $objectManager->get(\Magenest\InstagramShop\Model\Indexer\TopPhotos::class);
+//    $class->executeFull();
+//echo "https://www.facebook.com/dialog/oauth?client_id=" . 936760997448669
+//    . "&redirect_uri=" . "https://py.px.seepossible.link/"
+//    . "&scope=" . implode(",", [
+//        'manage_pages',
+//        'instagram_basic',
+//        'instagram_manage_insights',
+//        'pages_read_engagement',
+//        'pages_show_list'
+//    ])
+//    . "&state=" . "https://py.px.seepossible.link/static.php";
+
+    $class = $objectManager->get(\Magento\Sales\Model\OrderRepository::class);
+    $order = $class->get(1);
+    $class = $objectManager->get(\Magento\Sales\Model\Order\Email\Sender\OrderSender::class);
+    $class->send($order,true);
+//echo 2/0;
+
+//    $class = $objectManager->get(\SeePossible\CustomerDeleteRequest\Model\Request::class)->sent(870,'bhavesh+delete@seepossible.com','delete me');
+//    $class = $objectManager->get(\SeePossible\MonthlyPlan\Model\RefundService::class)->refundCompleted($class);
+//echo "ram:";
+//
+//    $class = $objectManager->get(\SeePossible\MonthlyPlan\Model\SubscriptionRepository::class);
+//    echo $class->getMaturityAmount($class->getByCode('SVGBP-5EXAV'));
+//    $class = $objectManager->get(\Magento\CatalogRule\Model\ResourceModel\Rule\CollectionFactory::class);
+//    print_r($class->create()->getData());
+//
+//    $class = $objectManager->get(\SeePossible\JewelryPriceRules\Model\Attribute\Source\RulesOptions::class);
+//    print_r($class->getAllOptions());
+} catch (\Exception $e) {
+    print_r(get_class_methods($e));
+    print_r($e->getCode());
+    print_r($e->getMessage());
+    print_r($e->getTraceAsString());
+}
+
+```
+
 
 # CMS BLOCK AND PAGE AND EMAIL TEMPLATE
 
