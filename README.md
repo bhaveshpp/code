@@ -6,6 +6,10 @@ log
 
 ```php
 
+// add this code to the bootstrap file and use shortcut prir
+
+function prir($data = '') { error_log(print_r($data, 1)."\n", 3,BP."/var/log/test.log");}
+
 // core
 
 error_log(print_r($queryString, 1)."\n", 3,BP."/var/log/test.log");
